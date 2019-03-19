@@ -1,0 +1,242 @@
+/*
+@author: Darwin Machado
+@id: 2948811
+@date: 2019
+@content: CSS style - Assigment 02
+*/
+
+/*Customize body*/
+body{
+	margin: 0;
+	background-color: white;
+}
+h1{
+	font-family:'Libre Franklin', sans-serif;
+	color: black;
+	padding-left:1em;
+	font-size: 2em;
+	margin-left: 1%;
+}
+h3{
+	font-family:'Libre Franklin', sans-serif;
+	color: space-gray;
+	padding:1em;
+}
+
+/*Customize header*/
+header{
+	background-color:#ff3300;
+	text-align: center;
+	position:static;
+	width:100%;
+	clear: both;
+	
+}
+header img{
+	width: 10%;
+}
+
+/*Customize section*/
+section {
+	display: -webkit-flex;
+	display: flex;
+	height: 100%;
+}
+
+/*Customize nav*/
+nav{
+	-webkit-flex: 0;
+	-ms-flex: 0;
+	flex: .2;
+	text-align: center;
+	background-color: #808080; 
+}
+ul {
+	list-style-type: none;
+	background-color: #808080;  
+	padding: 0;
+	margin: 0;
+}
+ul li i{
+	padding-left:1.25em;
+}
+
+li a{
+	display: block;
+	font-family:'Libre Franklin', sans-serif;
+	color:white;
+	padding: 1em 0%;
+	font-size:1.4em;
+	border-bottom: .75px solid white;
+	text-decoration: none;
+}
+li a.active {
+	background-color: #4CAF50;
+	color: white;
+}
+li a:hover:not(.active) {
+	background-color: white;
+	color: black;
+}
+i.material-icons{
+	padding: 0;
+}
+
+/*Customize article*/
+article{
+	-webkit-flex: 3;
+	-ms-flex: 3;
+	flex: 3;
+	padding: 1em;
+	background-color: #f1f1f1;
+	font-family:'Libre Franklin', sans-serif;
+	color: #333333;
+	height:100%;
+}
+.section-1{
+	box-shadow: 2px 4px 1px 3px #e6e6e6;
+	background-color:white;
+}
+.section-1 h1{
+	padding: 1em;
+	color:black;
+	font-style: italic;
+	
+}
+.section-2{
+	box-shadow: 2px 4px 1px 3px #e6e6e6;
+	background-color:white;
+	border: 1px solid white;
+}
+.img-icon{
+	display: block;
+	width: 10%;
+}
+.page a{
+	text-decoration:none;
+}
+.btn {
+	border: none;
+	margin: 0 auto;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	font-size: 4em;
+	border-radius: 1em;	
+}
+
+/*Customize forms*/
+form{
+	padding-left: 8em;
+	font-family:'Libre Franklin', sans-serif;
+	color: space-gray;
+	padding-left: 5em;
+}
+input[type=text], select, textarea{
+	width: 70%;	
+	border: 1px solid #ccc;
+	border-radius: 2em;
+	padding: 1em;
+	box-sizing: border-box;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	resize: vertical;
+}
+input[type=email]{
+	width: 70%;	
+	border: 1px solid #ccc;
+	border-radius: 2em;
+	padding: 1em;
+	box-sizing: border-box;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	resize: vertical;
+}
+input[type=date]{
+	width: 30%;	
+	border: 1px solid #ccc;
+	border-radius: 2em;
+	padding: 1em;
+	box-sizing: border-box;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	resize: vertical;
+}
+.container {
+  display: inline-block;
+  position: relative;
+  padding-left: 2.4em;
+  margin-bottom: 1em;
+  cursor: pointer;
+  font-size: 1em;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  us
+  er-select: none;
+}
+/* Hide the browser's default radio button */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1.5em;
+  width: 1.6em;
+  background-color: #eee;
+  border-radius: 60%;
+}
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #666666;
+}
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+ 	top: .45em;
+	left: .5em;
+	width: .7em;
+	height: .7em;
+	border-radius: 50%;
+	background: white;
+}
+input[type=submit]{
+	background-color:#4d4d4d;
+	width: 10%;
+	color: white;
+	padding: 1em 1%;
+	border: none;
+	border-radius: 1em;
+	cursor: pointer;
+}
+input[type=submit]:hover{
+	background-color: #a6a6a6;
+}
+
+/*Customize search button*/
+.search-btn{
+	background-color: red;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	font-size: 4em;
+	border-radius: 1em;	
+}
