@@ -3,10 +3,18 @@
 <head>
 	<meta charset="utf-8" />
 	<title>Griffith College </title>
-	<link rel="stylesheet" href="style.css" />
+	<link rel="stylesheet" href="styles.css" />
 	<link href="https://fonts.googleapis.com/css?family=Libre+Franklin|Rajdhani|Great+Vibes|Anton|Francois+One|Playfair+Display+SC" rel="stylesheet">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<script>
+			$(document).ready(function() {
+				$('[data-toggle="toggle"]').change(function(){
+					$(this).parents().next('.hide').toggle();
+				});
+			});
+	</script>
 </head>
+
  <body>
 	<header>
 				<img src="images/gc-logo.png" alt="logo">
@@ -33,8 +41,16 @@
 									<th>Student ID</th>
 									<th>Firstname</th>
 									<th>Surname</th>
-									<th>DOB </th>
-							
+									<th>DOB</th>
+									<th>Gender</th>
+									<th>Email</th>
+									<th>Phone</th>
+									<th>Address</th>
+									<th>City</th>
+									<th>Postcode</th>
+									<th>State</th>
+									<th>Country</th>
+									<th>Registration Date</th>
 								</tr>
 						</thead>
 						<tbody>
@@ -44,12 +60,12 @@
 									require ('mysqli_connect.php'); 
 									
 									//Make the query:
-									$q = "SELECT first_name, last_name, registration_date AS dr FROM users ORDER BY registration_date ASC";		
+									$q = "SELECT student_id, first_name, surname,dob, gender, email, phone, address,city, post_code,state, country, registration_date FROM student ORDER BY student_id ASC";		
 									
 									// Run the query.
 									$r = @mysqli_query ($dbc, $q); 
 									
-									
+										
 									if($r) {
 										//Count th number of returned rows:
 										$num = mysqli_num_rows($r);
@@ -57,13 +73,21 @@
 											while($row = mysqli_fetch_array($r)){
 												print("
 												<tr>
-												  <td>$file_name</td>
-												  <td>$size</td>
-												  <td sorttable_customkey='$timekey'>$modtime</a></td>
-												  <td><a href='read_file.php?file=$filename' class='btn'><i class='material-icons'>description</i></a></td>
-												  <td><a href='edit_file.php?file=$filename' class='btn'><i class='material-icons'>edit</i></a> </td>
-												  <td><a href='delete_file.php?file=$filename' class='btn'><i class='material-icons'>delete</i></a></td>
-												  </td>
+												  <td>$row[student_id]</td>
+												  <td>$row[first_name]</td>
+												  <td>$row[surname]</td>
+												  <td>$row[dob]</td>
+												  <td>$row[gender]</td>
+												  <td>$row[email]</td>
+												  <td>$row[phone]</td>
+												  <td>$row[address]</td>
+												  <td>$row[city]</td>
+												  <td>$row[post_code]</td>
+												  <td>$row[state]</td>
+												  <td>$row[country]</td>
+												  <td>$row[registration_date]</td>
+												  <td> <a href='#' class='btn'><i class='material-icons'>update</i></a> </td>
+												  <td> <a href='#' class='btn'><i class='material-icons'>delete</i></a> </td>
 												</tr>");
 											}
 										}else{
@@ -78,18 +102,18 @@
 											
 											// Debugging message:
 											echo '<p>' . mysqli_error($dbc) . '<br /><br />Query: ' . $q . '</p>';
-											
 									}
 									
 									// Close the database connection.
 									mysqli_close($dbc);
 						
 								?>	
-						</tbody>
+							</tbody>
 						</table>
-									</div>
+				</div>
 		</article>
 	</section>	
+		
  </body>
  </html> 
 
