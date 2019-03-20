@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8" />
 	<title>Griffith College </title>
-	<link rel="stylesheet" href="style.css" />
+	<link rel="stylesheet" href="styles.css" />
 	<link href="https://fonts.googleapis.com/css?family=Libre+Franklin|Rajdhani|Great+Vibes|Anton|Francois+One|Playfair+Display+SC" rel="stylesheet">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
@@ -27,7 +27,86 @@
 				</div>
 				<div class= "section-2">
 					<h3> Search</h3>
-						<form action="search_std.php">
+						<table class= "myTable">
+						 <thead>
+								<tr>
+									<th>Student ID</th>
+									<th>Firstname</th>
+									<th>Surname</th>
+									<th>DOB</th>
+									<th>Gender</th>
+									<th>Email</th>
+									<th>Phone</th>
+									<th>Address</th>
+									<th>City</th>
+									<th>Postcode</th>
+									<th>State</th>
+									<th>Country</th>
+									<th>Registration Date</th>
+								</tr>
+						</thead>
+						<tbody>
+					<?php 
+								//seach for student
+								if ($_SERVER["REQUEST_METHOD"] == "POST") {
+									
+									//Get input from user 
+									$search = $_POST ["search"];
+									
+									// Connect to the db.
+									require ('mysqli_connect.php'); 
+									
+									//Make the query:
+									$q = "SELECT student_id, first_name, surname,dob, gender, email, phone, address,city, post_code,state, country, registration_date
+									FROM student WHERE student_id = '$search' OR first_name = '$search' OR  surname = '$search' ";		
+									
+									// Run the query.
+									$r = @mysqli_query ($dbc, $q); 
+									
+									if($r) {
+										//Count th number of returned rows:
+										$num = mysqli_num_rows($r);
+										if ($num>0){
+											while($row = mysqli_fetch_array($r)){
+												print("
+												<tr>
+												  <td>$row[student_id]</td>
+												  <td>$row[first_name]</td>
+												  <td>$row[surname]</td>
+												  <td>$row[dob]</td>
+												  <td>$row[gender]</td>
+												  <td>$row[email]</td>
+												  <td>$row[phone]</td>
+												  <td>$row[address]</td>
+												  <td>$row[city]</td>
+												  <td>$row[post_code]</td>
+												  <td>$row[state]</td>
+												  <td>$row[country]</td>
+												  <td>$row[registration_date]</td>
+												  <td> <a href='#' class='btn'><i class='material-icons'>update</i></a> </td>
+												  <td> <a href='#' class='btn'><i class='material-icons'>delete</i></a> </td>
+												</tr>");
+											}
+										}else{
+											echo "There are no employees in the database<br/>";
+										}
+											
+											// Free up the resources.	
+											mysqli_free_result ($r); 
+									} else {
+											// Public message:
+											echo '<p class="error">The current users could not be retrieved. We apologize for any inconvenience.</p>';
+											
+											// Debugging message:
+											echo '<p>' . mysqli_error($dbc) . '<br /><br />Query: ' . $q . '</p>';
+									}
+									
+										// Close the database connection.
+										mysqli_close($dbc);
+								}
+								?>	
+								<tbody>
+						<form action="search_std.php" method="POST">
 								<input type="text" placeholder="Enter student ID, first name or surname..." name="search">
 								<input type="submit" value="search"><br><br>
 						</form>
