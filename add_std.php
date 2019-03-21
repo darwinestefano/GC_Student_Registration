@@ -1,9 +1,15 @@
+<!--
+@author: Darwin Machado
+@id: 2948811
+@date: 2019
+@content: Add new student  - Assigment 02
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
 	<title>Griffith College </title>
-	<link rel="stylesheet" href="style.css" />
+	<link rel="stylesheet" href="stylesheet.css" />
 	<link href="https://fonts.googleapis.com/css?family=Libre+Franklin|Rajdhani|Great+Vibes|Anton|Francois+One|Playfair+Display+SC" rel="stylesheet">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
@@ -17,8 +23,10 @@
 				<li><a class="link-1" href="index.php"><i class='material-icons'>home</i></a></li>
 				<li><a class="link-1" href="add_std.php"><i class='material-icons'>add</i></a></li>
 				<li><a class="link-1" href="search_std.php"><i class='material-icons'>search</i></a></li>
+				<!--
 				<li><a class="link-1" href="delete_std.php"><i class='material-icons'>delete</i></a></li>
 				<li><a class="link-1" href="update_std.php"><i class='material-icons'>update</i></a></li>
+				-->
 			</ul>
 		</nav>
 		<article>
@@ -149,14 +157,15 @@
 												$country =	mysqli_real_escape_string($dbc, trim($country));	
 												
 												// Make the insert query
-												//	$q = "INSERT INTO users (first_name, last_name, email, pass, registration_date) VALUES ('$first_name', '$ln', '$e', SHA1('$p'), NOW() )";		
+												$q = "INSERT INTO student (student_id, first_name, surname,dob, gender, email, phone, address,city, post_code,state, country, registration_date)
+												VALUES ('0', '$firstname', '$surname ', '$dob', '$gender','$email','$phone','$address','$city','$postcode','$state','$country', NOW() )";		
+												
 												// Run the query.
 												$r = @mysqli_query ($dbc, $q); 
 												
 												if ($r) { // If it ran OK.
 													// Print a message:
-													echo '<h1>Thank you!</h1>
-													<p>You are now registered. </p><p><br /></p>';	
+													echo '<h1>Thank you! You are now registered.</h1>';	
 												} else { // If it did not run OK.			
 													// Public message:
 													echo '<h1>System Error</h1>
@@ -193,15 +202,15 @@
 						
 						<label for = "gender"> Gender: </label> <br> <br>
 						<label class="container">Male
-						<input type="radio" checked="checked" name="gender" value="male">
+						<input type="radio" checked="checked" name="gender" value="M">
 						<span class="checkmark"></span>
 						</label>
 						<label class="container">Female
-						<input type="radio" name="gender" id="other" value="female">
+						<input type="radio" name="gender" id="other" value="F">
 						<span class="checkmark"></span>
 						</label>
 						<label class="container">Other
-						<input type="radio" name="gender" id="other" value="other">
+						<input type="radio" name="gender" id="other" value="O">
 						<span class="checkmark"></span>
 						</label> <br>
 					
