@@ -1,20 +1,18 @@
+<!--
+@author: Darwin Machado
+@id: 2948811
+@date: 2019
+@content: index.php  - Assigment 02
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
 	<title>Griffith College </title>
-	<link rel="stylesheet" href="styles.css" />
+	<link rel="stylesheet" href="stylesheet.css" />
 	<link href="https://fonts.googleapis.com/css?family=Libre+Franklin|Rajdhani|Great+Vibes|Anton|Francois+One|Playfair+Display+SC" rel="stylesheet">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-	<script>
-			$(document).ready(function() {
-				$('[data-toggle="toggle"]').change(function(){
-					$(this).parents().next('.hide').toggle();
-				});
-			});
-	</script>
 </head>
-
  <body>
 	<header>
 				<img src="images/gc-logo.png" alt="logo">
@@ -25,8 +23,10 @@
 				<li><a class="link-1" href="index.php"><i class='material-icons'>home</i></a></li>
 				<li><a class="link-1" href="add_std.php"><i class='material-icons'>add</i></a></li>
 				<li><a class="link-1" href="search_std.php"><i class='material-icons'>search</i></a></li>
+				<!--
 				<li><a class="link-1" href="delete_std.php"><i class='material-icons'>delete</i></a></li>
 				<li><a class="link-1" href="update_std.php"><i class='material-icons'>update</i></a></li>
+				-->
 			</ul>
 		</nav>
 		<article>
@@ -55,7 +55,6 @@
 						</thead>
 						<tbody>
 								<?php 
-								
 									// Connect to the db.
 									require ('mysqli_connect.php'); 
 									
@@ -65,7 +64,7 @@
 									// Run the query.
 									$r = @mysqli_query ($dbc, $q); 
 									
-										
+									//if run ok
 									if($r) {
 										//Count th number of returned rows:
 										$num = mysqli_num_rows($r);
@@ -86,14 +85,13 @@
 												  <td>$row[state]</td>
 												  <td>$row[country]</td>
 												  <td>$row[registration_date]</td>
-												  <td> <a href='#' class='btn'><i class='material-icons'>update</i></a> </td>
-												  <td> <a href='#' class='btn'><i class='material-icons'>delete</i></a> </td>
+												  <td> <a href='update_std.php?id=$row[student_id]' class='btn'><i class='material-icons'>update</i></a> </td>
+												  <td> <a href='delete_std.php?id=$row[student_id]' class='btn'><i class='material-icons'>delete</i></a> </td>
 												</tr>");
 											}
 										}else{
-											echo "There are no employees in the database<br/>";
+											echo "<h3>There are no students registred in the database! <h3><br/>";
 										}
-											
 											// Free up the resources.	
 											mysqli_free_result ($r); 
 									} else {
@@ -103,10 +101,8 @@
 											// Debugging message:
 											echo '<p>' . mysqli_error($dbc) . '<br /><br />Query: ' . $q . '</p>';
 									}
-									
 									// Close the database connection.
 									mysqli_close($dbc);
-						
 								?>	
 							</tbody>
 						</table>
